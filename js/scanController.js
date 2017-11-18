@@ -1,9 +1,9 @@
 function scan() {
 
-  $.ajax({ 
+  $.ajax({
     type: "GET",
     dataType: "jsonp",
-    url: "http://localhost:17001/scan",
+    url: "http://localhost:3000/scan",
     success: function(data){
      formatResult(data);
     }

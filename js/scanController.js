@@ -3,8 +3,8 @@ function scan() {
   $.ajax({ 
     type: "GET",
     dataType: "jsonp",
-    url: "http://localhost:8080/scan",
-    success: function(data){        
+    url: "http://localhost:17001/scan",
+    success: function(data){
      formatResult(data);
     }
   });

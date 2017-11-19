@@ -1,20 +1,23 @@
 function scan() {
 
-  $.ajax({
-    type: "GET",
-    dataType: "jsonp",
-    url: "http://localhost:3000/scan",
-    success: function(data){
-     formatResult(data);
-    }
+  var settings = {
+    
+    "crossDomain": true,
+    "url": "http://localhost:3000/scan",
+    "method": "GET",
+    "contentType": "application/json; charset=utf-8",
+    "async": false
+  }
+
+  $.ajax(settings).done(function (response) {
+    formatResult(response);
   });
 }
 
 function formatResult(data){
   var formattedResults = "";
   
-  var jsonObject = jQuery.parseJSON(data);
-  $.each( jsonObject, function( index, node ){
+  $.each( data, function( index, node ){
     var htmlNode = '<div id="node'+index+'" class="node"><img src="img/smartphone-call.svg" alt="phone" class="smallImage"/>';
     if(node.hostname) {htmlNode += '<p>'+node.hostname+'</p>';}
     if(node.ip) {htmlNode += '<p>'+node.ip+'</p>';}
